@@ -16,6 +16,7 @@ import {
 } from "react-icons/fa";
 import { fetchPropertyById } from "@/utils/requests";
 import PropertyHeaderImage from "@/components/PropertyHeaderImage";
+import Spinner from "@/components/Spinner";
 
 const PropertyPage = () => {
   const { id } = useParams();
@@ -46,8 +47,10 @@ const PropertyPage = () => {
         Property Not Found
       </h1>
     );
+
   return (
     <>
+      {loading && <Spinner loading={loading} />}
       {!loading && property && (
         <>
           <PropertyHeaderImage image={property.images[0]} />
@@ -61,6 +64,7 @@ const PropertyPage = () => {
               </Link>
             </div>
           </section>
+
           <section className="bg-blue-50">
             <div className="container m-auto py-10 px-10">
               <div className="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
