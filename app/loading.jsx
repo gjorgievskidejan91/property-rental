@@ -1,12 +1,12 @@
 "use client";
-import { ClipLoader, ClockLoader } from "react-spinners";
+import { ClipLoader, BounceLoader } from "react-spinners";
 const override = {
   display: "block",
   margin: "100px auto",
 };
 const LoadingPage = ({ loading }) => {
   return (
-    <ClipLoader
+    <BounceLoader
       color="#3B82F6"
       loading={loading}
       cssOverride={override}
