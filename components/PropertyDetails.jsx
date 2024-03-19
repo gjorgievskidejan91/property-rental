@@ -26,22 +26,23 @@ const PropertyDetails = ({ property }) => {
           Rates & Options
         </h3>
         <div className="flex flex-col md:flex-row justify-around">
-          <div className="flex items-center justify-center mb-4 border-b border-gray-200 md:border-b-0 pb-4 md:pb-0">
-            <div className="text-gray-500 mr-2 font-bold">
+          <div className="flex items-center justify-center mb-4 pb-4 md:pb-0">
+            <div className="text-gray-500 mr-2 font-bold">Nightly</div>
+
+            <div className="text-2xl font-bold text-blue-500">
               {property.rates.nightly ? (
-                `${property.rates.nightly.toLocaleString()}`
+                `$${property.rates.monthly.toLocaleString()}`
               ) : (
                 <FaTimes className="text-red-700" />
               )}
             </div>
-            <div className="text-2xl font-bold">
-              <i className="fa fa-xmark text-red-700"></i>
-            </div>
           </div>
-          <div className="flex items-center justify-center mb-4 border-b border-gray-200 md:border-b-0 pb-4 md:pb-0">
+          <div className="flex items-center justify-center mb-4 pb-4 md:pb-0">
+            <div className="text-gray-500 mr-2 font-bold">Weekly</div>
+
             <div className="text-2xl font-bold text-blue-500">
               {property.rates.weekly ? (
-                `$${property.rates.weekly.toLocaleString()}`
+                `$${property.rates.monthly.toLocaleString()}`
               ) : (
                 <FaTimes className="text-red-700" />
               )}
