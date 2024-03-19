@@ -23,7 +23,7 @@ const PropertyAddForm = () => {
     },
     seller_info: {
       name: "",
-      email: 'test"test.com',
+      email: "test@test.com",
       phone: "",
     },
     images: [],
@@ -286,7 +286,7 @@ const PropertyAddForm = () => {
                 name="amenities"
                 value="Washer & Dryer"
                 className="mr-2"
-                checked={fields.amenities.includes("Washer & Drayer")}
+                checked={fields.amenities.includes("Washer & Dryer")}
                 onChange={handleAmenitiesChange}
               />
               <label htmlFor="amenity_washer_dryer">Washer & Dryer</label>
@@ -422,7 +422,7 @@ const PropertyAddForm = () => {
                 name="amenities"
                 value="Smart TV"
                 className="mr-2"
-                checked={fields.amenities.includes("Smart Tv")}
+                checked={fields.amenities.includes("Smart TV")}
                 onChange={handleAmenitiesChange}
               />
               <label htmlFor="amenity_smart_tv">Smart TV</label>
@@ -434,7 +434,7 @@ const PropertyAddForm = () => {
                 name="amenities"
                 value="Coffee Maker"
                 className="mr-2"
-                checked={fields.amenities.includes("Coffe Maker")}
+                checked={fields.amenities.includes("Coffee Maker")}
                 onChange={handleAmenitiesChange}
               />
               <label htmlFor="amenity_coffee_maker">Coffee Maker</label>
