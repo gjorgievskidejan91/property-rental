@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import profileDefault from "@/assets/images/profile.png"; // Default profile image
 import Spinner from "@/components/Spinner"; // Spinner component for loading state
+import { toast } from "react-toastify";
 
 // ProfilePage component definition
 const ProfilePage = () => {
@@ -77,15 +78,15 @@ const ProfilePage = () => {
         const updatedProperties = properties.filter(
           (property) => property._id !== propertyId
         );
-
         // Update the properties state without the deleted property
         setProperties(updatedProperties);
+        toast.success("Property deleted successfully");
 
         // Log a success message to the console
         console.log("Property Deleted");
       } else {
         // Log an error message if deletion fails
-        console.error("Failed to delete property");
+        toast.delete("Failed to delete property");
       }
     } catch (error) {
       // Log any errors that occur during the deletion process
@@ -154,7 +155,7 @@ const ProfilePage = () => {
                       <div className="mt-2">
                         {/* Link to Property Edit Page */}
                         <Link
-                          href={`/property/${property._id}/edit`}
+                          href={`/properties/${property._id}/edit`}
                           className="bg-blue-500 text-white px-3 py-3 rounded-md mr-2 hover:bg-blue-600"
                         >
                           Edit
