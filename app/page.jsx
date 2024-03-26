@@ -2,7 +2,6 @@
 import Link from "next/link"; // Next.js Link component
 import Hero from "@/components/Hero"; // Hero component
 import InfoBoxes from "@/components/InfoBoxes"; // InfoBoxes component
-import Footer from "@/components/Footer"; // Footer component
 import PropertyCard from "@/components/PropertyCard"; // PropertyCard component
 import HomeProperties from "@/components/HomeProperties"; // HomeProperties component
 import { fetchProperties } from "@/utils/requests"; // Function to fetch properties
@@ -26,8 +25,6 @@ const HomePage = async () => {
       <InfoBoxes />
       {/* HomeProperties section */}
       <HomeProperties />
-      {/* Footer section */}
-      <Footer />
     </div>
   );
 };
