@@ -9,17 +9,22 @@ export const GET = async (request) => {
   try {
     await connectDb();
 
-    const sessionUser = await getSessionUser();
+    const { userId } = await getSessionUser();
 
-    if (!sessionUser || !sessionUser.userId) {
-      return new Response("User ID is required", { status: 401 });
-    }
+    const readMessages = await Message.find({ recipient: userId, read: true })
+      .sort({ createdAt: -1 }) // Sort "read" messages by date in descending order
+      .populate("sender", "username")
+      .populate("property", "name");
 
-    const { userId } = sessionUser;
+    const unreadMessages = await Message.find({
+      recipient: userId,
+      read: false,
+    })
+      .sort({ createdAt: -1 }) // Sort unread messages by date in descending order
+      .populate("sender", "username")
+      .populate("property", "name");
 
-    const messages = await Message.find({ recipient: userId })
-      .populate("sender", "name")
-      .populate("property", "title");
+    const messages = [...unreadMessages, ...readMessages]; // Combine unread and read messages
 
     return new Response(JSON.stringify(messages), {
       status: 200,
