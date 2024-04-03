@@ -8,8 +8,17 @@ export const GET = async (request) => {
   try {
     await connectDb();
 
-    const properties = await Property.find({});
-    return new Response(JSON.stringify(properties), {
+    const page = request.nextUrl.searchParams.get("page") || 1;
+    const pageSize = request.nextUrl.searchParams.get("pageSize") || 3;
+    const skip = (page - 1) * pageSize;
+    const totoalProperties = await Property.countDocuments({});
+
+    const properties = await Property.find({}).skip(skip).limit(pageSize);
+    const result = {
+      total: totoalProperties,
+      properties,
+    };
+    return new Response(JSON.stringify(result), {
       status: 200,
     });
   } catch (error) {

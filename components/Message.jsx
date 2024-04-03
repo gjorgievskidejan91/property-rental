@@ -15,7 +15,7 @@ const Message = ({ message }) => {
       });
       if (res.status === 200) {
         const { read } = await res.json();
-        console.log(read);
+
         setIsRead(read);
         setUnreadCount((prevCount) => (read ? prevCount - 1 : prevCount + 1));
         toast.success("Message marked as read");
