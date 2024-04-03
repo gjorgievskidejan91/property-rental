@@ -1,10 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
 import { fetchProperties } from "@/utils/requests";
 import FeaturedPropertyCard from "./FeaturedPropertyCard";
 
 const FeaturedProperties = async () => {
-  const properties = await fetchProperties({ showFeatured: true });
+  const properties = await fetchProperties({
+    showFeatured: true,
+  });
+
   return (
     properties.length > 0 && (
       <section className="bg-blue-50 px-4 pt-6 pb-10">
@@ -13,8 +14,8 @@ const FeaturedProperties = async () => {
             Featured Properties
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {properties.map((property, index) => (
-              <FeaturedPropertyCard property={property} key={index} />
+            {properties.map((property) => (
+              <FeaturedPropertyCard key={property._id} property={property} />
             ))}
           </div>
         </div>
@@ -22,5 +23,4 @@ const FeaturedProperties = async () => {
     )
   );
 };
-
 export default FeaturedProperties;
